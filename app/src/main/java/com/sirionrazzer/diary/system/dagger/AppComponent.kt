@@ -1,6 +1,7 @@
 package com.sirionrazzer.diary.system.dagger
 
 import com.sirionrazzer.diary.Diary
+import com.sirionrazzer.diary.auth.AuthActivity
 import com.sirionrazzer.diary.boarding.BoardingActivity
 import com.sirionrazzer.diary.boarding.BoardingPickerActivity
 import com.sirionrazzer.diary.creator.TemplateItemCreatorActivity
@@ -20,7 +21,6 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(diary: Diary)
-
     fun inject(authViewModel: AuthViewModel)
     fun inject(historyViewModel: HistoryViewModel)
     fun inject(templateItemViewerViewModel: TemplateItemViewerViewModel)
@@ -30,6 +30,7 @@ interface AppComponent {
     fun inject(mainActivity: MainActivity)
     fun inject(boardingPickerActivity: BoardingPickerActivity)
     fun inject(boardingActivity: BoardingActivity)
+    fun inject(authActivity: AuthActivity)
     fun inject(historyActivity: HistoryActivity)
     fun inject(templateItemCreatorActivity: TemplateItemCreatorActivity)
     fun inject(templateItemViewerActivity: TemplateItemViewerActivity)

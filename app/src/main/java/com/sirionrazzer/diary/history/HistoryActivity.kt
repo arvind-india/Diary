@@ -17,6 +17,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.sirionrazzer.diary.R
+import com.sirionrazzer.diary.auth.AuthActivity
 import com.sirionrazzer.diary.boarding.BoardingActivity
 import com.sirionrazzer.diary.main.MainActivity
 import com.sirionrazzer.diary.profile.LinkAnonymousAccountActivity
@@ -216,6 +217,9 @@ class HistoryActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
                 }
                 R.id.options_button -> {
                     startActivity<SettingsActivity>()
+                }
+                R.id.auth_button -> {
+                    startActivity<AuthActivity>()
                 }
                 R.id.stats_button -> {
                     startActivity<ChooseTrackItemStatActivity>()

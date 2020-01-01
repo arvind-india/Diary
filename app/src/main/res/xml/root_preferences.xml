@@ -45,6 +45,10 @@
             app:icon="@android:drawable/ic_menu_delete"
             app:key="@string/deleteHistoryButton"
             app:title="@string/delete_history" />
+        <SwitchPreferenceCompat
+            app:icon="@android:drawable/ic_lock_idle_lock"
+            app:key="PINLockButton"
+            app:title="@string/PINLockText" />
 
         <!--<ListPreference-->
         <!--app:defaultValue="reply"-->

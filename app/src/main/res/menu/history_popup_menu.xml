@@ -32,4 +32,10 @@
         android:visible="true"
         android:title="@string/create_account"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/auth_button"
+        android:icon="@drawable/ic_account_circle_create"
+        android:title="auth"
+        android:visible="true"
+        app:showAsAction="never" />
 </menu>

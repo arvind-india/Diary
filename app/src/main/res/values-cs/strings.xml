@@ -119,4 +119,11 @@
     <string name="example_heartpoints">Kardio body</string>
     <string name="example_moveminutes">Minuty pohybu</string>
     <string name="example_cycling">Kolo</string>
+    <string name="action_settings">Nastaveni</string>
+    <string name="enter_pin">Zadaj PIN</string>
+    <string name="title_activity_auth">Verifikuj sa</string>
+    <string name="title_activity_auth_setup">Nastaveni verifikace</string>
+    <string name="RetypePinSetup">Napis znova</string>
+    <string name="PINLockText">PIN zamek</string>
+    <string name="PINLockButton">PIN zamek</string>
 </resources>

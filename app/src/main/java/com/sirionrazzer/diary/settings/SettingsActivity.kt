@@ -1,5 +1,6 @@
 package com.sirionrazzer.diary.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +9,15 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.sirionrazzer.diary.R
+import com.sirionrazzer.diary.auth.AuthSetupActivity
 import com.sirionrazzer.diary.main.MainViewModel
 import com.sirionrazzer.diary.models.TrackItemDao
+import com.sirionrazzer.diary.models.UserStorage
 import io.realm.Realm
 import kotlinx.android.synthetic.main.toolbar.*
 import main.java.com.sirionrazzer.diary.boarding.AuthViewModel
+import javax.inject.Inject
+
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -38,8 +43,11 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
+        @Inject
+        lateinit var userStorage: UserStorage
         private lateinit var mainViewModel: MainViewModel
         private lateinit var authViewModel: AuthViewModel
+
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
@@ -47,14 +55,16 @@ class SettingsActivity : AppCompatActivity() {
             mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
             authViewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
 
-            val button = findPreference<Preference>(getString(R.string.deleteHistoryButton))
-            button!!.onPreferenceClickListener = Preference.OnPreferenceClickListener {
+            val deleteHistoryBtn =
+                findPreference<Preference>(getString(R.string.deleteHistoryButton))
+            deleteHistoryBtn!!.onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 mainViewModel.deleteAllTrackItems()
                 Toast.makeText(context, getString(R.string.history_deleted), Toast.LENGTH_SHORT)
                     .show()
                 true
             }
-
+            val pinPref = findPreference<SwitchPreferenceCompat>("PINLockButton")
+            pinPref!!.isChecked = userStorage.isPinSetup()
             (authViewModel.isAnonymous.value as Boolean).let {
                 if (it) {
                     preferenceScreen.findPreference<SwitchPreferenceCompat>("auto_sync")
@@ -62,7 +72,13 @@ class SettingsActivity : AppCompatActivity() {
                         false
                 }
             }
+            pinPref.setOnPreferenceClickListener {
+                startActivity(Intent(context, AuthSetupActivity::class.java))
+                false
+            }
+
         }
+
     }
 }
 

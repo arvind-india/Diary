@@ -124,5 +124,12 @@
         <item>Text</item>
         <item>Number</item>
     </string-array>
+    <string name="title_activity_auth">Verify identity</string>
+    <string name="action_settings">Settings</string>
+    <string name="PINLockButton">PIN Lock</string>
+    <string name="PINLockText">PIN Lock</string>
+    <string name="title_activity_auth_setup">AuthSetup</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="RetypePinSetup">Retype Pin</string>
 
 </resources>

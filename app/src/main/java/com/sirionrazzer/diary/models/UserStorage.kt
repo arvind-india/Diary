@@ -48,4 +48,22 @@ class UserStorage @Inject constructor() {
             updateFunc(this)
         }
     }
+
+    fun setPINLock(pw: String) {
+        prefs.edit().putBoolean("pin_lock_enabled", true).apply()
+        prefs.edit().putString("pin", pw).apply()
+    }
+
+    fun removePINLock() {
+        prefs.edit().putBoolean("pin_lock_enabled", false).apply()
+        prefs.edit().putString("pin", "").apply()
+    }
+
+    fun getPIN(): String? {
+        return prefs.getString("pin", "")
+    }
+
+    fun isPinSetup(): Boolean {
+        return prefs.getBoolean("pin_lock_enabled", false)
+    }
 }
